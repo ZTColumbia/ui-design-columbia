@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+{{ super() }}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
+<script>
+    let data = {{data|tojson}};
+    let names = {{names|tojson}}
+</script>
+
+<style>
+    .homeheader {
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+</style>
+
+{% endblock head %}
+
+{% block content %}
+    
+{{ super() }}
+
+<div class="row">
+    <div class="col-12 homeheader">
+        Most Popular History Channels this week!
+    </div>
+</div>
+
+<div class="row">  
+    <div class="col-12" id="popular-list">
+    </div>
+</div>
+
+{% endblock content %}

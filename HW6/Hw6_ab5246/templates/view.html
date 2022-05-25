@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+{{ super() }}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'view.js') }}"></script>
+
+<script>
+    var names = {{names|tojson}}
+    var item = {{item|tojson}}
+</script>
+
+<style>
+    .viewtitle {
+        font-weight: bold;
+        font-size: 28px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+</style>
+
+{% endblock head %}
+
+{% block content %}
+    
+{{ super() }}
+
+<div class="row">
+    <div id="title" class="col-md-10 viewtitle">
+    </div>
+</div>
+
+<br>
+
+<div id="image" class="col-md-6 image">
+</div>
+
+<br>
+
+<div class="row">
+    <div id="subscribers" class="col-md-3">
+        <b>Subscribers:</b>
+    </div>
+    <div id="views" class="col-md-3">
+        <b>Views:</b>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div id="link" class="col-md-6">
+        <b>Link:</b>
+    </div>
+</div>
+
+<br>
+
+<div id="summary" class="row">
+    <span><b>Summary</b></span>
+</div>
+
+<br>
+
+<div class="row">
+    <b>Genres</b>
+</div>
+
+<div id="genres" class="col-12">
+</div>
+
+{% endblock content %}

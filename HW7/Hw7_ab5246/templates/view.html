@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+{{ super() }}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'view.js') }}"></script>
+
+<script>
+    let names = {{names|tojson}}
+    let item = {{item|tojson}}
+</script>
+
+<style>
+
+    #summary {
+        color: black;
+    }
+
+    .edit {
+        font-size: 28px;
+        padding: 15px;
+    }
+
+    .viewtitle {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 28px;
+        padding-top: 20px;
+    }
+
+    #image{
+        padding-bottom: 10px;
+    }
+
+    .headings{
+        color: grey;
+        font-size: 18px;
+        padding-bottom: 4px;
+        padding-top: 6px;
+    }
+
+
+</style>
+
+{% endblock head %}
+
+{% block content %}
+    
+{{ super() }}
+
+<div class="row">
+    <div id="title" class="col-md-11 viewtitle">
+    </div>
+    <div id="edit">
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div id="image" class="col-md-6 image">
+    </div>
+    <div >
+        <div id="link" class="col-md-6">
+            <b>Link: </b>
+        </div>
+        <br>
+        <div id="subscribers" class="col-md-3">
+            <b>Subscribers:</b>
+        </div>
+        <br>
+        <div id="views" class="col-md-3">
+            <b>Views:</b>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row headings">
+    <b>Genres</b>
+</div>
+<div id="genres" class="col-md-12">
+</div>
+
+<br>
+
+<div class="row headings">
+    <b>Summary</b>
+</div>
+<div id="summary" class="row">
+</div>
+
+
+{% endblock content %}

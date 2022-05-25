@@ -1,0 +1,44 @@
+.title{
+    margin-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+    font-size: 48px;
+    background-color: lightgrey;
+    color: black;
+}
+
+.col-3{
+    margin-right: 20px;
+}
+
+.header{
+    padding: 30px;
+    background-color: #abcdef;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.name{
+    border: 1px solid lightgrey;
+}
+
+.highlight{
+    cursor: move;
+    background-color: lightyellow;
+}
+
+.ui-draggable-dragging{
+    cursor: move;
+    background-color: lightyellow;
+    position: absolute;
+    z-index: 1000;
+}
+
+.darker{
+    background-color: cornflowerblue;
+}
+
+.darkest{
+    background-color: blue;
+}

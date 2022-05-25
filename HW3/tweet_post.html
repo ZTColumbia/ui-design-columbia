@@ -1,0 +1,125 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        textarea{
+            margin-left: 20px;
+        }
+
+        .titles{
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-bottom: 2px;
+        }
+
+        .notpostable{
+            color: grey;
+        }
+
+        .validcount{
+            display: inline-block;
+            color: lightgrey;
+            margin-left: 20px;
+        }
+
+        .invalidcount{
+            display: inline-block;
+            color: red;
+            font-weight: bold;
+        }
+
+        .posted{
+            margin-left: 20px;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        const MAXLEN = 30;
+        const USERNAME = "atul";
+        let content = "";
+        let remaining;
+
+        // add to posted tweets
+        function addPost(){
+            let currpost = $("<div></div>");
+            currpost.addClass("posted");
+            currpost.html(USERNAME + ": " + content);
+            $("#postrecord").prepend(currpost);
+            $("#textarea").focus();
+        }
+
+        // update and display the count and post tweet button
+        function updateCount(){
+            content = $("#textarea").val().replace(/(\r\n|\n|\r)/gm, "");
+            remaining = MAXLEN - content.length;
+            $("#count").html(remaining);
+
+            // postable or not postable
+            if (content.length > MAXLEN || content.replace(/\s+/g, '').length == 0){
+                $("#posttweet").addClass("notpostable");
+                $("#posttweet").prop("disabled", true);
+            }
+            else{
+                $("#posttweet").removeClass("notpostable");
+                $("#posttweet").prop("disabled", false);
+            }
+            
+            // make the count either grey (valid) or red (warning)
+            if (content.length > MAXLEN){
+                $("#count").addClass("invalidcount");
+            } 
+            else{
+                $("#count").removeClass("invalidcount");
+            }
+
+        }
+
+        $(document).ready(function(){
+            $("#textarea").focus();
+            updateCount();
+            // when keyup, if it is enter, post the tweet and update count and otherwise just update count
+            $("#textarea").keyup(function(event){
+                // enter key
+                if (event.which == 13 && content.length <= MAXLEN && content.replace(/\s+/g, '').length != 0){
+                    addPost();
+                    $("#textarea").val("");
+                }
+                updateCount();
+            })
+
+            // when post tweet button has been clicked
+            $("#posttweet").click(function(){
+                if (content.replace(/\s+/g, '').length != 0){
+                    addPost();
+                    $("#textarea").val("");
+                    updateCount();
+                }
+            })
+        })
+
+    </script>
+</head>
+
+
+<body>
+
+    <div>
+        <div class="titles">
+            Write a tweet
+        </div>
+        <textarea type="text" id="textarea" rows="1" cols="30"></textarea>
+        <br>
+        <div id="count" class="validcount"></div>
+        <button id="posttweet">Post Tweet</button>
+    </div>
+    <br>
+    <div>
+        <div class="titles">
+            POSTS
+        </div>
+        <div id="postrecord"></div>
+    </div>
+</body>
+
+</html>

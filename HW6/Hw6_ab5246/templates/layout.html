@@ -1,0 +1,50 @@
+<html>
+    <head>
+        {% block head %}
+
+        <!-- jquery -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename = 'redirect.js') }}"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <style>
+            .result {
+                font-size: 18px;
+                padding: 15px;
+            }
+            #searchform {
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+            #searchbox {
+                width: 300px;
+            }
+        </style>
+        
+        {% endblock head %}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    YouTube History Database
+                </a>
+                <form class="form-inline" id="searchform">
+                    <input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
+                    <button id="searchbutton" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <div id="searchresults" class="container">
+            {% block content %}
+            
+            {% endblock content %}
+        </div>
+
+    </body>
+</html>

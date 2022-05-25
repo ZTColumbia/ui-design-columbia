@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./log_sales.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="./log_sales.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 header">Columbia Paper Infinity</div>
+        </div>
+        <div class="row">
+            <div class="col-2">Log your paper sales:</div>
+            <div class="col-5">
+                <textarea id="clientbox" rows="1" cols="45" placeholder="Client"></textarea>
+                <div id="clientwarning" class="warning"></div>
+            </div>
+            <div class="col-2">
+                <textarea id="reambox" rows="1" cols="15" placeholder="# Reams"></textarea>
+                <div id="reamwarning" class="warning"></div>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" id="submitbutton">Submit</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="salelist"></div>
+        </div>
+    </div>
+</body>
+</html>

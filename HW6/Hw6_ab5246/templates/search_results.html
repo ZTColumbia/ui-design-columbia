@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+{{ super() }}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'search_results.js') }}"></script>
+
+<script>
+    let results = {{results|tojson}};
+    let searchkey = {{searchkey|tojson}};
+    let names = {{names|tojson}}
+</script>
+
+<style>
+    .toprow{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+</style>
+
+{% endblock head %}
+
+{% block content %}
+    
+{{ super() }}
+
+{% endblock content %}

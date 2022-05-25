@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="data:,">
+	
+	<!-- jquery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'tree_parser.js') }}"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='recipe.css')}}">
+	<script>
+	
+	        let parent_id                = {{parent_id|tojson}}
+		    let ingredient_images        = {{ingredient_images|tojson}}
+	        let ingredient_names         = {{ingredient_names|tojson}}
+	        let recipe_image             = {{recipe_image|tojson}}
+	        let recipe_name              = {{recipe_name|tojson}}
+	        let recipe_text              = {{recipe_text|tojson}}
+
+	
+	</script>
+	
+	<title>Recipe</title>
+</head>
+<body>
+<div class="recipe row">
+	
+	
+	<div class="igredients-col">
+		
+		<h1> Igredients </h1>
+		
+		{% for image in ingredient_images %}
+		
+		<div class='igredients-list'></div>
+		
+		<h5 style="font-weight: bold;">{{ingredient_names[loop.index-1]}}</h5>
+		<image src="{{url_for('static', filename='images/'+ image)}}"
+		       alt="olive oil" height="100" width="100">
+			
+			{% endfor %}
+	
+	
+	</div>
+	
+	<div class="recipe-col">
+		
+		<h1> {{recipe_name}} </h1>
+		
+		<div class="recipe-description">
+			<ul>
+				{% for text in recipe_text %}
+				
+				<p style="font-size:22px;   text-align: left; width:80%">step : {{loop.index}}) {{text}} </p>
+				
+				
+				{% endfor %}
+			
+			</ul>
+		</div>
+	
+	</div>
+	
+	<div class="result-col">
+		
+		<div class="recipe-image">
+			<image style="border:12px solid #021a40;" src="{{url_for('static', filename='images/'+ recipe_image)}}"
+			       alt="olive oil" height="450" width="450">
+		
+		</div>
+	</div>
+	
+	
+	<div class='go-back-button'>
+		
+		<button onclick="renderParent(event, {{parent_id}})"> Go Back</button>
+	
+	</div>
+
+
+</div>
+</body>
+</html>
+

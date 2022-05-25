@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'log_sales.js') }}"></script>
+    <script>
+        let all_sales = {{sales|tojson}}
+        let all_clients = {{clients|tojson}}
+    </script>
+
+    <div class="row">
+        <div class="col-2">Log your paper sales:</div>
+        <div class="col-5">
+            <textarea id="clientbox" rows="1" cols="45" placeholder="Client"></textarea>
+            <div id="clientwarning" class="warning"></div>
+        </div>
+        <div class="col-2">
+            <textarea id="reambox" rows="1" cols="15" placeholder="# Reams"></textarea>
+            <div id="reamwarning" class="warning"></div>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-primary" id="submitbutton">Submit</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" id="salelist"></div>
+    </div>
+
+{% endblock %}
+
